@@ -28,26 +28,31 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 
-from distutils.core import setup, Extension
+import unittest
+import chizer
 
-LONG_DESCRIPTION = open('README.md').read()
-VERSION = '1.0'
 
-module = Extension('chizer', ['cxx/chizer_python.c','cxx/chizer.c'],
-                   include_dirs=['cxx']
-                    )
+class TestChizer(unittest.TestCase):
 
-setup(
-    name='chizer',
-    version=VERSION,
-    url='https://github.com/storj-jp/chizer',
-    download_url='https://github.com/storj-jp/chizer/tarball/' + VERSION,
-    license=open('LICENSE').read(),
-    author='Shinya Yagyu',
-    author_email='utamaro.sisho@gmail.com',
-    description='A tool for determining whether or not a file is encrypted.',
-    long_description=LONG_DESCRIPTION,
-    ext_modules=[module],
-    keywords=['storj', 'storj-jp', 'utamaro', 'chi-square', 'chi-squared',
-              'randomness']
-)
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_is_file_encrypted(self):
+        self.assertTrue(chizer.is_file_encrypted("data/faked.dat"),
+                        "file encryption check test for faked data")
+        self.assertFalse(chizer.is_file_encrypted(
+            "data/Storj - Decentralizing Cloud Storage-vl3bUzfn2lg.mp4.gz"),
+            "file encryption check test for gzipped move file")
+
+    def test_are_chunks_encrypted(self):
+        self.assertFalse(chizer.are_chunks_encrypted("data/faked.dat"),
+                         "chunks encryption check test for faked data")
+        self.assertTrue(chizer.are_chunks_encrypted(
+            "data/ac59ab5a282afd3de22062c7d62b5367"),
+            "chuns encryption check test for encrypted file")
+
+if __name__ == '__main__':
+    unittest.main()

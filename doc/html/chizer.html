@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!doctype html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,7 +9,7 @@
     
     <title>chizer module &mdash; .  documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,11 +24,16 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title=".  documentation" href="index.html" />
-    <link rel="prev" title="Welcome to .’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to .’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -39,66 +45,22 @@
         <li class="right" >
           <a href="index.html" title="Welcome to .’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">.  documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">.  documentation</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="module-chizer">
-<span id="chizer-module"></span><h1>chizer module<a class="headerlink" href="#module-chizer" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="chizer.isChunksEncrypted">
-<tt class="descclassname">chizer.</tt><tt class="descname">isChunksEncrypted</tt><big>(</big><em>fname</em><big>)</big><a class="reference internal" href="_modules/chizer.html#isChunksEncrypted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chizer.isChunksEncrypted" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculate chi square root for each chunks and judge specified file is encrypted or not.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>str</em>) &#8211; source file name to be calculated.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">file is encrypted or not.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="chizer.isFileEncrypted">
-<tt class="descclassname">chizer.</tt><tt class="descname">isFileEncrypted</tt><big>(</big><em>fname</em><big>)</big><a class="reference internal" href="_modules/chizer.html#isFileEncrypted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chizer.isFileEncrypted" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculate chi square root for the specified file and judge specified file is encrypted or not.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>str</em>) &#8211; source file name to be calculated.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">file is encrypted or not.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to .&#8217;s documentation!</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/chizer.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/chizer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -113,9 +75,57 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-chizer">
+<span id="chizer-module"></span><h1>chizer module<a class="headerlink" href="#module-chizer" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="chizer.are_chunks_encrypted">
+<code class="descclassname">chizer.</code><code class="descname">are_chunks_encrypted</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chizer.html#are_chunks_encrypted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chizer.are_chunks_encrypted" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate chi square root for each chunks and judge specified file is
+encrypted or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>str</em>) &#8211; source file name to be calculated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">0 if chunks are not encrypted , others if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chizer.is_file_encrypted">
+<code class="descclassname">chizer.</code><code class="descname">is_file_encrypted</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chizer.html#is_file_encrypted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chizer.is_file_encrypted" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate chi square root for the specified file and judge specified file
+is encrypted or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>str</em>) &#8211; source file name to be calculated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">0 if file is not encrypted , others if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -127,12 +137,12 @@
         <li class="right" >
           <a href="index.html" title="Welcome to .’s documentation!"
              >previous</a> |</li>
-        <li><a href="index.html">.  documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">.  documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Author.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

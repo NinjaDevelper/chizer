@@ -1,21 +1,35 @@
 /*
- Copyright (c) 2015, utamaro
- All rights reserved.
-
- Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
- 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+ * Copyright (c) 2015, Shinya Yagyu
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, 
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 3. Neither the name of the copyright holder nor the names of its 
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE.
+*/
  
  /**
  * @file chizer.c
- * @brief main code for chizer , which uses a chi-square test to determine if a file is encrypted or not.
+ * @brief main code for chizer , which uses a chi-square test to determine if 
+ * a file is encrypted or not.
  */
 
  
@@ -50,7 +64,8 @@
 #define THRESHOLD_CHUNK 512 //from article
 /** 
  * chunks number criteria for determing whole file is random or not.
- * if number of chunks whose chi square root is over  THRESHOLD_CHUNK  is over THRESHOLD_SUSPECT,
+ * if number of chunks whose chi square root is over  THRESHOLD_CHUNK  is over
+ * THRESHOLD_SUSPECT,
  * the file is judged as not random(not encrypted).
  */
 #define THRESHOLD_SUSPECTS 5 //from article
@@ -120,11 +135,12 @@ int isFileEncrypted(char *fname){
 
 /**
  * 
- *  calculate chi square root for each chunks and judege specified file is encrypted or not.
+ *  calculate chi square root for each chunks and judege specified file is 
+ * encrypted or not.
  * @param fname   source file name to be calculated.
  * @return chi square root
  */
-int isChunksEncrypted(char *fname){
+int areChunksEncrypted(char *fname){
     int i=0;
     int suspects=0;
     FILE *fp=NULL;
@@ -141,7 +157,8 @@ int isChunksEncrypted(char *fname){
     FILE *fout=fopen("result.dat","wb");
     long no=0;
 #endif
-    while( (bytes_read = fread(buffer, sizeof(unsigned char), BUFFER_SIZE, fp)) !=0){
+    while( (bytes_read = fread(buffer, sizeof(unsigned char), 
+                                BUFFER_SIZE, fp)) !=0){
         for(i=0;i<bytes_read;i+=CHUNK_SIZE){
             long bytes=bytes_read-i>CHUNK_SIZE?CHUNK_SIZE:bytes_read-i;
             memset(hist, 0, HIST_SIZE*sizeof(*hist));
@@ -172,7 +189,7 @@ int main(int argc,char *argv[]){
         printf(":-( \tWhole File is NOT encrypted.\n");
     }
 
-    if(isChunksEncrypted(argv[1])){
+    if(areChunksEncrypted(argv[1])){
         printf(";-) \tchunks are encrypted.\n");
     } else{
         printf(":-( \tchunks are NOT encrypted.\n");
