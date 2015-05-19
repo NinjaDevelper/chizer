@@ -30,12 +30,12 @@ Once installed, you can use `chizer` to analyze a file of indeterminate encrypti
 
     $ ./chizer <filename_of_shard>
 
-If you are using Python, you can use `isFileEncrypted()` to test for encryption (by testing the entire file at once), or you can use `isChunksEncrypted()` to do a deeper analysis by analyzing discrete chunks of the file:
+If you are using Python, you can use `isFileEncrypted()` to test for encryption (by testing the entire file at once), or you can use `areChunksEncrypted()` to do a deeper analysis by analyzing discrete chunks of the file:
 
     import chizer
     file_path = 'data/faked.dat'
     isFileEncrypted = chizer.isFileEncrypted(file_path)
-    areChunksEncrypted = chizer.isChunksEncrypted(file_path)
+    areChunksEncrypted = chizer.areChunksEncrypted(file_path)
 
 Refer [here](https://rawgit.com/StorjPlatform/chizer/master/doc/html/chizer.html) for library use.
 

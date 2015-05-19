@@ -126,6 +126,7 @@ double getFileChi(char *fname){
 #ifdef DEBUG
     printf("\tChi square distribution=%lf\n",chi);
 #endif
+    fclose(fp);
     return chi;
 }
 
