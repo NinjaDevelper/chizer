@@ -1,5 +1,8 @@
-language: c
-compiler: gcc
+language: python
+python:
+  - '2.7'
+  - '3.3'
+  - '3.4'
 
 before_install:
   - git submodule update --init --recursive
@@ -8,13 +11,15 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install valgrind
   - sudo pip install cpp-coveralls
+  
 script:
   - ./test
   - PYTHONPATH=. python tests/test.py
+  
 after_success:
   - coveralls --exclude test.c --exclude chizer.h --exclude data --exclude libtap --gcov-options '\-lp'
   - make clean
   - make chizer
-  - time chizer/chizer data/ac59ab5a282afd3de22062c7d62b5367
-  - LD_LIBRARY_PATH=libtap G_SLICE=always-malloc G_DEBUG=gc-friendly  valgrind -v --tool=memcheck --leak-check=full --show-reachable=yes --log-file=a.log --num-callers=40 chizer/chizer data/ac59ab5a282afd3de22062c7d62b5367
+  - time cxx/chizer data/ac59ab5a282afd3de22062c7d62b5367
+  - LD_LIBRARY_PATH=libtap G_SLICE=always-malloc G_DEBUG=gc-friendly  valgrind -v --tool=memcheck --leak-check=full --show-reachable=yes --log-file=a.log --num-callers=40 cxx/chizer data/ac59ab5a282afd3de22062c7d62b5367
   - cat a.log
