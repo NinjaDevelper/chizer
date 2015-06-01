@@ -16,14 +16,14 @@ To compile the C program:
 
     $ make chizer
 
-To build the python module:
+To install the python module:
 
-    $ make python
+    $ python setup.py install
     
 To run the associated tests:
 
     $ make test
-    $ ./test
+    $ LD_LIBRARY_PATH=libtap ./test
 
 ## Usage
 Once installed, you can use `chizer` to analyze a file of indeterminate encryption:
